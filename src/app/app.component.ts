@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Store } from '@ngrx/store';
 import { IPhoto } from './components/types';
-import { storePhotos } from './actions/counter';
+import { storePhotos } from './actions/photos';
 
 @Component({
   selector: 'ns-root',

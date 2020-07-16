@@ -1,5 +1,18 @@
-<div>hello</div>
-
-<ng-container *ngFor="let photo of (photos | async).photos">
-    <span>{{photo.title}}</span>
+<ng-container *ngFor="let photo of (photos | async)" class="main-container">
+    <div class="photo-container">
+        <div class="photo-header">
+            <mat-form-field class="example-full-width">
+                <mat-label>{{ photo.title }}</mat-label>
+                <input matInput value="Sushi">
+            </mat-form-field>
+            <mat-icon aria-hidden="false" (click)="onDelete(photo.id)">delete_sweep</mat-icon>
+        </div>
+        
+        <img src="{{photo.thumbnailUrl}}">
+        <div class="buttons">
+            <button color="primary" mat-raised-button (click)="onChange(photo.id)">Change</button>
+            <button color="accent"  mat-raised-button >Delete</button>
+        </div>
+    </div>
+    
 </ng-container>

@@ -1,16 +1,16 @@
 import { createReducer, on } from '@ngrx/store';
-import { storePhotos } from '../actions/counter';
+import { storePhotos, deletePhoto } from '../actions/photos';
+import { IPhoto } from '../components/types';
 
-export const initialState = {
-    photos: []
-};
+export const initialState = [];
 
 const mainReducer = createReducer(initialState,
-    on(storePhotos, (state, { photos }) => {
-        return {
-            ...state,
-            photos
-        };
+    on(storePhotos, (_, { photos }) => {
+        return photos;
+    }),
+    on(deletePhoto, (state, { id }) => {
+        const changedPhotos = state.filter((photo: IPhoto) => photo.id !== id);
+        return changedPhotos;
     })
 );
 
