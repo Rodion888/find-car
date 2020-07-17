@@ -1,18 +1,17 @@
-<ng-container *ngFor="let photo of (photos | async)" class="main-container">
+<ng-container *ngFor="let photo of (photos | async)">
     <div class="photo-container">
         <div class="photo-header">
-            <mat-form-field class="example-full-width">
-                <mat-label>{{ photo.title }}</mat-label>
-                <input matInput value="Sushi">
-            </mat-form-field>
-            <mat-icon aria-hidden="false" (click)="onDelete(photo.id)">delete_sweep</mat-icon>
+            <div>Title: </div>
+            <div class="photo-title">{{ photo.title }}</div>
+            <button mat-raised-button
+                    (click)="openDialog(photo, 'edit-photo')"
+                    style="margin-right: 10px;">Edit</button>
+            <button mat-mini-fab (click)="onDelete(photo.id)" color="primary">
+                <mat-icon>delete</mat-icon>
+            </button>
         </div>
-        
-        <img src="{{photo.thumbnailUrl}}">
-        <div class="buttons">
-            <button color="primary" mat-raised-button (click)="onChange(photo.id)">Change</button>
-            <button color="accent"  mat-raised-button >Delete</button>
-        </div>
+        <img (click)="openDialog(photo, 'full-photo')" class="image-block" src="{{photo.thumbnailUrl}}">
     </div>
-    
 </ng-container>
+
+    

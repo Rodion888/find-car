@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
   }
 
   storePhotos(data: Array<IPhoto>) {
-    const photos = data.filter((photo: IPhoto) => photo.id < 10);
+    const photos = data.filter((photo: IPhoto) => photo.id < 100);
     this.store.dispatch(storePhotos(photos));
   }
 }
